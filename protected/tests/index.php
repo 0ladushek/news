@@ -9,7 +9,13 @@ require_once __DIR__ . '\..\Models\Article.php';
 
 //var_dump(\Models\Product::findAll());
 //var_dump(\Models\Product::findById(2));
+//
+//$model = new \Models\Article;
+//$ret = $model->getNewsList();
+//var_dump($ret);
 
-$model = new \Models\Article;
-$ret = $model->getNewsList();
-var_dump($ret);
+$article = new \Models\Article;
+
+$article->title = 'alex';
+$article->text = 'lorem';
+var_dump($article->insert());

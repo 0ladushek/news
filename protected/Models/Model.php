@@ -26,4 +26,22 @@ abstract class Model
 
         return $data[0];
     }
+
+    public function insert()
+    {
+        $rows = $values = [];
+        foreach ($this as $key => $val) {
+            if($key == 'id') {
+                continue;
+            }
+            $rows[] = $key;
+            $values[$key] = $val;
+        }
+        $sql = 'INSERT INTO ' . static::TABLE . ' (' .  implode(', ', $rows) . ') ' .
+            'VALUES ' . '(:' . implode(', :', $rows) . ')';
+        $db = new \Db;
+        $db->execute($sql, $values);
+        $this->id = $db->lastInsertId();
+        return $sql;
+    }
 }

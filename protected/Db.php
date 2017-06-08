@@ -11,6 +11,11 @@ class Db
         $this->dbh = new \PDO('mysql:host=localhost;dbname=shop', 'root', '' );
     }
 
+    public function lastInsertId()
+    {
+        return $this->dbh->lastInsertId();
+    }
+
     public function execute($sql, $params = [])
     {
         $sth = $this->dbh->prepare($sql);
