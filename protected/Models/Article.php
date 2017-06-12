@@ -13,7 +13,7 @@ class Article extends Model
 
     const TABLE = 'News';
 
-    public function getNewsList()
+    public static function getNewsList()
     {
         $db = new \Db;
         $sql = 'SELECT id, title, date FROM ' . static::TABLE . ' ORDER BY date DESC LIMIT 3';
