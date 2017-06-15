@@ -27,6 +27,24 @@ abstract class Model
         return $data[0];
     }
 
+    protected function isNew()
+    {
+        if (empty($this->id)) {
+            return true;
+        }
+
+        $sql = 'SELECT id FROM ' . static::TABLE;
+        $db = new \Db;
+        $arr = $db->query($sql);
+
+        foreach ($arr as $value) {
+            if ($this->id == $value->id) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public function insert()
     {
         $rows = $values = [];
@@ -61,5 +79,24 @@ abstract class Model
         $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(", ", $rows)  . ' WHERE id=' . $this->id;
         $db = new \Db;
         return $db->execute($sql, $values);
+    }
+
+    public function delete()
+    {
+        if ($this->isNew()) {
+            return false;
+        }
+
+        $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id = :id';
+        $db = new \Db;
+        return $db->execute($sql, ['id' => $this->id]);
+    }
+
+    public function save() {
+        if($this->isNew()) {
+            return $this->insert();
+        }
+        return $this->update();
+
     }
 }
