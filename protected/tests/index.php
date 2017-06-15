@@ -16,6 +16,8 @@ require_once __DIR__ . '\..\Models\Article.php';
 
 $article = new \Models\Article;
 
-$article->title = 'alex';
-$article->text = 'lorem';
-var_dump($article->insert());
+$article->id = 7;
+$article->title = 'A2LEX';
+$article->text = 'lOREM';
+var_dump($article);
+var_dump($article->update());

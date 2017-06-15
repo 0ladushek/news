@@ -44,4 +44,22 @@ abstract class Model
         $this->id = $db->lastInsertId();
         return $sql;
     }
+
+    public function update() {
+        if (empty($this->id)) {
+            return false;
+        }
+
+        $rows = $values = [];
+        foreach ($this as $key => $val) {
+            if('id' === $key) {
+                continue;
+            }
+            $rows[] = $key . '=:' . $key;
+            $values[$key] = $val;
+        }
+        $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(", ", $rows)  . ' WHERE id=' . $this->id;
+        $db = new \Db;
+        return $db->execute($sql, $values);
+    }
 }
