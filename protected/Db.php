@@ -8,7 +8,7 @@ class Db
 
     public function __construct()
     {
-        $this->dbh = new \PDO('mysql:host=localhost;dbname=shop', 'root', '' );
+        $this->dbh = new \PDO('mysql:host=localhost;dbname=test', 'root', '' );
     }
 
     public function lastInsertId()

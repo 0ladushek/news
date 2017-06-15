@@ -11,7 +11,7 @@ class Article extends Model
     public $date;
     public $author_id;
 
-    const TABLE = 'News';
+    const TABLE = 'news';
 
     public static function getNewsList()
     {
