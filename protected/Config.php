@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/Singleton.php';
+
 class Config
 {
     public $data;
