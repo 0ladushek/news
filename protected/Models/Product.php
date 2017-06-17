@@ -1,6 +1,6 @@
 <?php
 
-namespace Models;
+namespace App\Models;
 require_once __DIR__ . '/Model.php';
 
 class Product extends Model

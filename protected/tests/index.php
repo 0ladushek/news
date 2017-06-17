@@ -1,9 +1,7 @@
 <?php
 
-require_once __DIR__ . '\..\Db.php';
-require_once __DIR__ . '\..\Models\Product.php';
-require_once __DIR__ . '\..\Models\Article.php';
 
+require_once __DIR__ . '/../autoload.php';
 
 //$db = new Db();
 
@@ -14,7 +12,7 @@ require_once __DIR__ . '\..\Models\Article.php';
 //$ret = $model->getNewsList();
 //var_dump($ret);
 
-$article = new \Models\Article;
+$article = new App\Models\Article;
 
 $article->id = 2;
 //$article->title = 'A2LEX';

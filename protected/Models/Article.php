@@ -1,6 +1,6 @@
 <?php
 
-namespace Models;
+namespace App\Models;
 
 
 class Article extends Model
@@ -15,7 +15,7 @@ class Article extends Model
 
     public static function getNewsList()
     {
-        $db = new \Db;
+        $db = new \App\Db;
         $sql = 'SELECT id, title, date FROM ' . static::TABLE . ' ORDER BY date DESC LIMIT 3';
         return $db->query($sql);
     }

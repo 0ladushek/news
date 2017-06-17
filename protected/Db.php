@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/Models/Product.php';
+namespace App;
 
 class Db
 {
@@ -26,7 +26,7 @@ class Db
     {
         $sth = $this->dbh->prepare($sql);
         $sth->execute($prepare);
-        $data = $sth->fetchAll(PDO::FETCH_CLASS, $className);
+        $data = $sth->fetchAll(\PDO::FETCH_CLASS, $className);
         return $data;
     }
 }

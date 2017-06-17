@@ -1,9 +1,8 @@
 <?php
 
-require_once __DIR__ . '/Models/Model.php';
-require_once __DIR__ . '/Models/Article.php';
 
-$data = Models\Article::findAll();
+
+$data = App\Models\Article::findAll();
 
 ?>
 

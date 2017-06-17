@@ -1,9 +1,11 @@
 <?php
 
-require_once __DIR__ . '/Singleton.php';
+namespace  App;
 
 class Config
 {
+    use Singleton;
+
     public $data;
     public function __construct()
     {

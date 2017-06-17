@@ -1,7 +1,7 @@
 <?php
 
-namespace Models;
-require_once __DIR__ . '/../Db.php';
+namespace App\Models;
+
 
 abstract class Model
 {
@@ -9,14 +9,14 @@ abstract class Model
 
     public static function findAll()
     {
-        $db = new \Db;
+        $db = new \App\Db;
         $sql = 'SELECT * FROM ' . static::TABLE;
         return $db->query($sql, static::class);
     }
 
     public static function findById($id)
     {
-        $db = new \Db;
+        $db = new \App\Db;
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id = :id';
         $data = $db->query($sql, static::class, ['id' => $id]);
 
@@ -34,7 +34,7 @@ abstract class Model
         }
 
         $sql = 'SELECT id FROM ' . static::TABLE;
-        $db = new \Db;
+        $db = new \App\Db;
         $arr = $db->query($sql);
 
         foreach ($arr as $value) {
@@ -57,7 +57,7 @@ abstract class Model
         }
         $sql = 'INSERT INTO ' . static::TABLE . ' (' .  implode(', ', $rows) . ') ' .
             'VALUES ' . '(:' . implode(', :', $rows) . ')';
-        $db = new \Db;
+        $db = new \App\Db;
         $db->execute($sql, $values);
         $this->id = $db->lastInsertId();
         return $sql;
@@ -77,7 +77,7 @@ abstract class Model
             $values[$key] = $val;
         }
         $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(", ", $rows)  . ' WHERE id=' . $this->id;
-        $db = new \Db;
+        $db = new \App\Db;
         return $db->execute($sql, $values);
     }
 
@@ -88,7 +88,7 @@ abstract class Model
         }
 
         $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id = :id';
-        $db = new \Db;
+        $db = new \App\Db;
         return $db->execute($sql, ['id' => $this->id]);
     }
 
