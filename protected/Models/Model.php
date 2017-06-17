@@ -5,7 +5,7 @@ namespace App\Models;
 /**
  * Class Model
  * @package App\Models
- * @property TABLE
+ * @property const TABLE
  */
 abstract class Model
 {
