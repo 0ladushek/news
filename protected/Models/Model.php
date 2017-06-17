@@ -2,7 +2,11 @@
 
 namespace App\Models;
 
-
+/**
+ * Class Model
+ * @package App\Models
+ * @property TABLE
+ */
 abstract class Model
 {
     const TABLE = '';
