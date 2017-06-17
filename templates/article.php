@@ -16,15 +16,16 @@
     <title>Document</title>
 </head>
 <body>
+
 <div class="panel panel-default">
     <div class="panel-heading">
-        <?= $data->title;?>
+        <?= $this->article->title;?>
     </div>
     <div class="panel-body">
-        <?= $data->text;?>
+        <?= $this->article->text;?>
     </div>
     <div class="panel-body">
-        <?= $data->date;?>
+        <?= $this->article->date;?>
     </div>
 </div>
 </body>

@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<?php foreach ($data as $v): ?>
+<?php foreach ($this->news as $v): ?>
     <a href="article.php/?id=<?= $v->id ?>"><?= $v->title ?></a><br>
 <?php endforeach; ?>
 </body>

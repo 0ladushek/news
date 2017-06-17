@@ -1,11 +1,3 @@
-<?php
-
-
-
-$data = App\Models\Article::findAll();
-
-?>
-
 <!doctype html>
 <html lang="ru">
 <head>
@@ -28,11 +20,12 @@ $data = App\Models\Article::findAll();
     <div class="container">
         <table class="table table-bordered">
             <tr>
-                <?php foreach ($data[0] as $k => $v): ?>
+
+                <?php foreach ($this->news as $k => $v): ?>
                     <td> <?php echo $k ?> </td>
                 <?php endforeach; ?>
             </tr>
-            <?php foreach ($data as $v): ?>
+            <?php foreach ($this->news as $v): ?>
                 <tr>
                     <td><?php echo $v->id; ?></td>
                     <td><?php echo $v->title; ?></td>
