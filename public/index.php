@@ -2,12 +2,14 @@
 
 require_once __DIR__ . '/../protected/autoload.php';
 
-//?ctr=News&act=Default
 
+$uri = $_SERVER['REQUEST_URI'];
+$parts = explode('/', $uri);
 
+$controllerName = $parts[1] ?: 'News';
+$controllerName = '\\App\\Controllers\\' . $controllerName;
+$actionName = $parts[2] ?: 'default';
 
-$controllerName = '\\App\\Controllers\\' . $_GET['ctr'];
-$actionName     = $_GET['act'] ?? 'Default';
 
 $controller = new $controllerName;
 $controller->action($actionName);

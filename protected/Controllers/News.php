@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Constroller;
+use App\Controller;
 use App\Models\Article;
 
-class News extends Constroller
+class News extends Controller
 {
     protected function actionDefault()
     {
@@ -18,12 +18,11 @@ class News extends Constroller
     {
         if (isset($_GET['id'])) {
             $id = (int) $_GET['id'];
+
             $data = Article::findById($id);
+            $this->view->article = $data;
+            $this->view->display(__DIR__ . '/../../templates/article.php');
         }
-
-        $this->view->article = $data;
-        $this->view->display(__DIR__ . '/../../templates/article.php');
-
     }
 
     protected function actionAdmin()
