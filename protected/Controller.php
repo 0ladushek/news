@@ -25,6 +25,7 @@ abstract class Controller
             return $this->$methodName();
         }
         else {
+            header("HTTP/1.0 401 Forbidden");
             die('Доступ закрыт');
         }
     }

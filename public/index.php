@@ -12,4 +12,23 @@ $actionName = $parts[2] ?: 'default';
 
 
 $controller = new $controllerName;
-$controller->action($actionName);
+
+
+try {
+    $controller->action($actionName);
+}
+
+catch (App\Exceptions\DBRequestException $e) {
+    $controller = new \App\Controllers\Errors;
+    $controller->action('DBRequestException');
+}
+
+catch (App\Exceptions\DBConnectException $e) {
+    $controller = new \App\Controllers\Errors;
+    $controller->action('DBConnectError');
+}
+
+catch (App\Exceptions\NotFoundException $e) {
+    $controller = new \App\Controllers\Errors;
+    $controller->action('404');
+}

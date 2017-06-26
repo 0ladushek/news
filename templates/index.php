@@ -10,7 +10,7 @@
 <body>
 
 <?php foreach ($this->news as $v): ?>
-    <a href="?ctr=news&act=one&id=<?= $v->id ?>"><?= $v->title ?></a>
+    <a href="/news/one/?id=<?= $v->id ?>"><?= $v->title ?></a>
     <i>Автор: <?php echo $v->author ?></i><br>
 <?php endforeach; ?>
 </body>

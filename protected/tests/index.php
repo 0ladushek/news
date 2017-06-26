@@ -1,7 +1,7 @@
 <?php
 
 
-require_once __DIR__ . '/../autoload.php';
+//require_once __DIR__ . '/../autoload.php';
 
 //$db = new Db();
 
@@ -22,12 +22,13 @@ require_once __DIR__ . '/../autoload.php';
 //
 //var_dump( $article->delete());
 
-$autors = App\Models\Autor::findAll();
-var_dump($autors);
-
-$autor = new \App\Models\Autor;
-$autor->name = 'Олег';
-$autor->name = 'Пётр';
-//$autor->save();
-
-var_dump($autors);
+//$autors = App\Models\Autor::findAll();
+//var_dump($autors);
+//
+//$autor = new \App\Models\Autor;
+//$autor->name = 'Олег';
+//$autor->name = 'Пётр';
+////$autor->save();
+//
+//var_dump($autors);
+//

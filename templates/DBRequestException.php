@@ -16,28 +16,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="row">
-    <div class="container">
-        <table class="table table-bordered">
-            <tr>
 
-                <?php foreach ($this->news[0] as $k => $v): ?>
-                    <td> <?php echo $k ?> </td>
-                <?php endforeach; ?>
-            </tr>
-            <?php foreach ($this->news as $v): ?>
-                <tr>
-                    <td><?php echo $v->id; ?></td>
-                    <td><?php echo $v->title; ?></td>
-                    <td><?php echo $v->text; ?></td>
-                    <td><?php echo $v->date; ?></td>
-                    <td><?php echo $v->author_id; ?></td>
-                    <td><a href="/admin/delete/?id=<?php echo $v->id ?>"> Удалить </a></td>
-                    <td><a href="/admin/edit/?id=<?php echo $v->id ?>">Редактировать</a></td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
+<h1>Ошибка в запросе</h1>
 
-    </div>
+
 </body>
 </html>

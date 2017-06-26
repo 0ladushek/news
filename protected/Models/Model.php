@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\MultiException;
+
 /**
  * Class Model
  * @package App\Models
@@ -10,6 +12,25 @@ namespace App\Models;
 abstract class Model
 {
     const TABLE = '';
+
+    public function fill(array $data)
+    {
+
+        $errors = new MultiException;
+
+        foreach ($this as $k => $v) {
+            if(!empty($data[$k])) {
+                $this->$k = $data[$k];
+            }
+            else {
+                $errors->add(new \Exception('У аргумента отсутсвует поле  ' . $k));
+            }
+        }
+
+        if(!$errors->empty()) {
+            throw $errors;
+        }
+    }
 
     public static function findAll()
     {

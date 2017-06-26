@@ -2,13 +2,21 @@
 
 namespace App;
 
+use App\Exceptions\NotFoundException;
+use App\Exceptions\DBConnectException;
+use App\Exceptions\DBRequestException;
+
 class Db
 {
     protected $dbh;
 
     public function __construct()
     {
-        $this->dbh = new \PDO('mysql:host=localhost;dbname=test', 'root', '' );
+        try {
+            $this->dbh = new \PDO('mysql:host=localhost;dbname=test', 'root', '');
+        } catch (\PDOException $e) {
+            Throw new DBConnectException;
+        }
     }
 
     public function lastInsertId()
@@ -18,7 +26,11 @@ class Db
 
     public function execute($sql, $params = [])
     {
-        $sth = $this->dbh->prepare($sql);
+        try {
+            $sth = $this->dbh->prepare($sql);
+        } catch (\PDOException $e) {
+            Throw new DBRequestException;
+        }
         return $sth->execute($params);
     }
 
@@ -27,6 +39,9 @@ class Db
         $sth = $this->dbh->prepare($sql);
         $sth->execute($prepare);
         $data = $sth->fetchAll(\PDO::FETCH_CLASS, $className);
+        if(empty($data)) {
+            Throw new NotFoundException;
+        }
         return $data;
     }
 }
