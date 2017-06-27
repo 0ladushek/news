@@ -3,6 +3,9 @@
 require_once __DIR__ . '/../protected/autoload.php';
 
 
+
+
+
 $uri = $_SERVER['REQUEST_URI'];
 $parts = explode('/', $uri);
 
@@ -12,6 +15,8 @@ $actionName = $parts[2] ?: 'default';
 
 
 $controller = new $controllerName;
+
+
 
 
 try {
@@ -24,6 +29,7 @@ catch (App\Exceptions\DBRequestException $e) {
 }
 
 catch (App\Exceptions\DBConnectException $e) {
+
     $controller = new \App\Controllers\Errors;
     $controller->action('DBConnectError');
 }

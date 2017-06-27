@@ -13,9 +13,10 @@ class Db
     public function __construct()
     {
         try {
-            $this->dbh = new \PDO('mysql:host=localhost;dbname=test', 'root', '');
+            $this->dbh = new \PDO('mysql:host=localhost;dbname=teasdfsadfst', 'root', '');
         } catch (\PDOException $e) {
-            Throw new DBConnectException;
+            Loger::add($e);
+            Throw new DBConnectException('Ошибка при подключений к БД');
         }
     }
 
@@ -29,7 +30,8 @@ class Db
         try {
             $sth = $this->dbh->prepare($sql);
         } catch (\PDOException $e) {
-            Throw new DBRequestException;
+            Loger::add($e);
+            Throw new DBRequestException('Ошибка в запросе');
         }
         return $sth->execute($params);
     }

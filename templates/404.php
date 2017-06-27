@@ -17,7 +17,8 @@
 </head>
 <body>
 
-    <h1>404</h1>
+    <h1>Ошибка</h1>
+    <h2><?php echo $e->getMessage(); ?></h2>
 
 
 </body>

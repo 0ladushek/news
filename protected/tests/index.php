@@ -32,3 +32,6 @@
 //
 //var_dump($autors);
 //
+
+
+$log = new \App\Loger('lent');
