@@ -19,13 +19,13 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <?= $this->article->title;?>
+        {{ article.title }}
     </div>
     <div class="panel-body">
-        <?= $this->article->text;?>
+        {{ article.text }}
     </div>
     <div class="panel-body">
-        <?= $this->article->date;?>
+        {{ article.date }}
     </div>
 </div>
 </body>

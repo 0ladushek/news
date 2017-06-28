@@ -12,7 +12,7 @@ class Admin extends Controller
         $data = Article::findAll();
 
         $this->view->news = $data;
-        $this->view->display(__DIR__ . '/../../templates/admin.php');
+        $this->view->display('admin.php');
     }
 
     protected function actionEdit()
@@ -22,7 +22,7 @@ class Admin extends Controller
 
             $data = Article::findById($id);
             $this->view->article = $data;
-            $this->view->display(__DIR__ . '/../../templates/edit.php');
+            $this->view->display('edit.php');
         }
     }
 

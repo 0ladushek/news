@@ -20,22 +20,23 @@
     <div class="container">
         <table class="table table-bordered">
             <tr>
+                {% for key in news|first|keys %}
+                <td>{{ key }}</td>
+                {% endfor %}
 
-                <?php foreach ($this->news[0] as $k => $v): ?>
-                    <td> <?php echo $k ?> </td>
-                <?php endforeach; ?>
+
             </tr>
-            <?php foreach ($this->news as $v): ?>
+            {% for v in news %}
                 <tr>
-                    <td><?php echo $v->id; ?></td>
-                    <td><?php echo $v->title; ?></td>
-                    <td><?php echo $v->text; ?></td>
-                    <td><?php echo $v->date; ?></td>
-                    <td><?php echo $v->author_id; ?></td>
-                    <td><a href="/admin/delete/?id=<?php echo $v->id ?>"> Удалить </a></td>
-                    <td><a href="/admin/edit/?id=<?php echo $v->id ?>">Редактировать</a></td>
+                    <td>{{ v.id }}</td>
+                    <td>{{ v.title }}</td>
+                    <td>{{ v.text }}</td>
+                    <td>{{ v.date }}</td>
+                    <td>{{ v.author_id }}</td>
+                    <td><a href="/admin/delete/?id={{ v.id }}"> Удалить </a></td>
+                    <td><a href="/admin/edit/?id={{ v.id }}">Редактировать</a></td>
                 </tr>
-            <?php endforeach; ?>
+            {% endfor %}
         </table>
 
     </div>

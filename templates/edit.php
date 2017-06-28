@@ -28,21 +28,21 @@
             <div class="col-md-6 col-md-offset-3">
 
 
-                    <span>ID: <?=$this->article->id?></span>
+                    <span>ID: {{ article.id }}</span>
                     <input type="hidden" name="id" value="<?=$this->article->id?>">
 
                     <div class="form-group">
-                        <input type="text"  name="title" class="form-control" placeholder="title" value="<?=$this->article->title?>">
+                        <input type="text"  name="title" class="form-control" placeholder="title" value="{{ article.title }}">
                     </div>
 
                     <div class="form-group">
-                        <textarea id="<?=$this->article->id?>" name="text"  class="form-control" cols="30" rows="10" placeholder="text">
-                            <?php echo $this->article->text ?>
+                        <textarea id="{{ article.id }}" name="text"  class="form-control" cols="30" rows="10" placeholder="text">
+                            {{ article.text }}
                         </textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="<?=$this->article->id?>"> <?php echo $this->article->date ?> </label>
+                        <label for="{{ article.id }}"> {{ article.date }} </label>
                         <input type="date" name="date" class="form-control" >
                     </div>
 

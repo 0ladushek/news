@@ -13,7 +13,7 @@ class Db
     public function __construct()
     {
         try {
-            $this->dbh = new \PDO('mysql:host=localhost;dbname=teasdfsadfst', 'root', '');
+            $this->dbh = new \PDO('mysql:host=localhost;dbname=test', 'root', '');
         } catch (\PDOException $e) {
             Loger::add($e);
             Throw new DBConnectException('Ошибка при подключений к БД');

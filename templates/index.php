@@ -9,9 +9,11 @@
 </head>
 <body>
 
-<?php foreach ($this->news as $v): ?>
-    <a href="/news/one/?id=<?= $v->id ?>"><?= $v->title ?></a>
-    <i>Автор: <?php echo $v->author ?></i><br>
-<?php endforeach; ?>
+{% for v in news %}
+    <a href="/news/one/?id={{ v.id }}">{{ v.title }}</a>
+    <i>Автор:{{ v.author }} </i><br>
+{% endfor %}
+
+
 </body>
 </html>
