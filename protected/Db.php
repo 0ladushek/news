@@ -16,7 +16,7 @@ class Db
             $this->dbh = new \PDO('mysql:host=localhost;dbname=test', 'root', '');
         } catch (\PDOException $e) {
             Loger::add($e);
-            Throw new DBConnectException('Ошибка при подключений к БД');
+            throw new DBConnectException('Ошибка при подключений к БД');
         }
     }
 
@@ -31,7 +31,7 @@ class Db
             $sth = $this->dbh->prepare($sql);
         } catch (\PDOException $e) {
             Loger::add($e);
-            Throw new DBRequestException('Ошибка в запросе');
+            throw new DBRequestException('Ошибка в запросе');
         }
         return $sth->execute($params);
     }
@@ -42,7 +42,7 @@ class Db
         $sth->execute($prepare);
         $data = $sth->fetchAll(\PDO::FETCH_CLASS, $className);
         if(empty($data)) {
-            Throw new NotFoundException;
+            throw new NotFoundException;
         }
         return $data;
     }

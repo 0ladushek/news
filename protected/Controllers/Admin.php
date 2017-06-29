@@ -18,7 +18,7 @@ class Admin extends Controller
     protected function actionEdit()
     {
         if (isset($_GET['id'])) {
-            $id = (int) $_GET['id'];
+            $id = (int)$_GET['id'];
 
             $data = Article::findById($id);
             $this->view->article = $data;
@@ -29,9 +29,11 @@ class Admin extends Controller
     protected function actionSave()
     {
         $article = new Article;
+        var_dump($_POST);die;
         foreach ($article as $k => $v) {
-            $article->$k = $_POST[$k] ?: '';
+            $article->$k = $_POST[$k] ?? null;
         }
+
         $article->save();
 
         header('Location: /admin');

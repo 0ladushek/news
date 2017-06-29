@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+use App\MagicTrait;
+
 
 /**
  * Class Article
@@ -13,11 +15,11 @@ namespace App\Models;
  */
 class Article extends Model
 {
-    public $id;
-    public $title;
-    public $text;
-    public $date;
-    public $author_id;
+//    public $id;
+//    public $title;
+//    public $text;
+//    public $date;
+//    public $author_id;
 
     const TABLE = 'news';
 
@@ -26,6 +28,9 @@ class Article extends Model
         if ($key == 'author' && !empty($this->author_id)) {
             $author_name = Autor::findById($this->author_id)->name;
             return $author_name;
+        }
+        else {
+            return $this->data[$key];
         }
     }
 

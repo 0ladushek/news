@@ -22,13 +22,13 @@ class News extends Controller
 
             $data = Article::findById($id);
             if(empty($data)) {
-                Throw new NotFoundException;
+                throw new NotFoundException;
             }
             $this->view->article = $data;
             $this->view->display('article.php');
         }
         else {
-            Throw new \Exception('Не передан get параметр');
+            throw new \Exception('Не передан get параметр');
         }
     }
 

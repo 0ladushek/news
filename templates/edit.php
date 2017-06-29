@@ -29,7 +29,7 @@
 
 
                     <span>ID: {{ article.id }}</span>
-                    <input type="hidden" name="id" value="<?=$this->article->id?>">
+                    <input type="hidden" name="id" value="{{ article.id }}">
 
                     <div class="form-group">
                         <input type="text"  name="title" class="form-control" placeholder="title" value="{{ article.title }}">
