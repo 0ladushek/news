@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\MultiException;
-use App\MagicTrait;
+
 /**
  * Class Model
  * @package App\Models
@@ -13,28 +13,19 @@ use App\MagicTrait;
 
 abstract class Model
 {
-    use MagicTrait;
-
     const TABLE = '';
 
     public function fill(array $data)
     {
 
-        $errors = new MultiException;
-
         foreach ($this as $k => $v) {
             if(!empty($data[$k])) {
                 $this->$k = $data[$k];
             }
-            else {
-                $errors->add(new \Exception('У аргумента отсутсвует поле  ' . $k));
-            }
+
         }
 
-        if(!$errors->empty()) {
-            throw $errors;
-        }
-
+        return $this;
     }
 
     public static function findAll()
@@ -59,7 +50,7 @@ abstract class Model
 
     protected function isNew()
     {
-        if (empty($this->data['id'])) {
+        if (empty($this->id)) {
             return true;
         }
 
@@ -68,7 +59,7 @@ abstract class Model
         $arr = $db->query($sql);
 
         foreach ($arr as $value) {
-            if ($this->data['id']== $value->id) {
+            if ($this->id == $value->id) {
                 return false;
             }
         }
@@ -78,7 +69,7 @@ abstract class Model
     public function insert()
     {
         $rows = $values = [];
-        foreach ($this->data as $key => $val) {
+        foreach ($this as $key => $val) {
             if($key == 'id') {
                 continue;
             }
@@ -89,24 +80,24 @@ abstract class Model
             'VALUES ' . '(:' . implode(', :', $rows) . ')';
         $db = new \App\Db;
         $db->execute($sql, $values);
-        $this->data['id']= $db->lastInsertId();
+        $this->id = $db->lastInsertId();
         return $sql;
     }
 
     public function update() {
-        if (empty($this->data['id'])) {
+        if (empty($this->id)) {
             return false;
         }
 
         $rows = $values = [];
-        foreach ($this->data as $key => $val) {
+        foreach ($this as $key => $val) {
             if('id' === $key) {
                 continue;
             }
             $rows[] = $key . '=:' . $key;
             $values[$key] = $val;
         }
-        $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(", ", $rows)  . ' WHERE id=' . $this->data['id'];
+        $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(", ", $rows)  . ' WHERE id=' . $this->id;
         $db = new \App\Db;
         return $db->execute($sql, $values);
     }
@@ -119,7 +110,7 @@ abstract class Model
 
         $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id = :id';
         $db = new \App\Db;
-        return $db->execute($sql, ['id' => $this->data['id']]);
+        return $db->execute($sql, ['id' => $this->id]);
     }
 
     public function save() {

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-use App\MagicTrait;
 
 
 /**
@@ -15,11 +14,11 @@ use App\MagicTrait;
  */
 class Article extends Model
 {
-//    public $id;
-//    public $title;
-//    public $text;
-//    public $date;
-//    public $author_id;
+    public $id;
+    public $title;
+    public $text;
+    public $date;
+    public $author_id;
 
     const TABLE = 'news';
 
