@@ -28,7 +28,13 @@ class Admin extends Controller
 
     protected function actionSave()
     {
-        $article = new Article;
+        if(!empty($_POST('id'))) {
+            $article = Article::findById((int) $_POST('id'));
+        }
+        else {
+            $article = new Article;
+        }
+
         foreach ($article as $k => $v) {
             $article->$k = $_POST[$k] ?? null;
         }
