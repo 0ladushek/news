@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\AdminDataTable;
 use App\Controller;
 use App\Models\Article;
 
@@ -9,9 +10,14 @@ class Admin extends Controller
 {
     protected function actionDefault()
     {
-        $data = Article::findAll();
+//        $data = Article::findAll();
+//        $this->view->news = $data;
+//        $this->view->display('admin.php');
 
-        $this->view->news = $data;
+        $data = Article::findAll();
+        $table = new AdminDataTable($data, ['getTitle']);
+        $data = $table->render();
+        $this->view->data = $data;
         $this->view->display('admin.php');
     }
 

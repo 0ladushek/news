@@ -18,27 +18,7 @@
 <body>
 <div class="row">
     <div class="container">
-        <table class="table table-bordered">
-            <tr>
-                {% for key in news|first|keys %}
-                <td>{{ key }}</td>
-                {% endfor %}
-
-
-            </tr>
-            {% for v in news %}
-                <tr>
-                    <td>{{ v.id }}</td>
-                    <td>{{ v.title }}</td>
-                    <td>{{ v.text }}</td>
-                    <td>{{ v.date }}</td>
-                    <td>{{ v.author_id }}</td>
-                    <td><a href="/admin/delete/?id={{ v.id }}"> Удалить </a></td>
-                    <td><a href="/admin/edit/?id={{ v.id }}">Редактировать</a></td>
-                </tr>
-            {% endfor %}
-        </table>
-
+        {{ data }}
     </div>
 </body>
 </html>

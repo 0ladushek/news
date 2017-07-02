@@ -25,6 +25,11 @@ class Article extends Model
 
     const TABLE = 'news';
 
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
     public function __get($key)
     {
         if ($key == 'author' && !empty($this->author_id)) {
