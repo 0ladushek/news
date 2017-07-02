@@ -46,4 +46,11 @@ class Db
         }
         return $data;
     }
+
+    public function queryEach($sql,  $className = 'stdClass', $prepare = [])
+    {
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute($prepare);
+        yield $sth->fetch(\PDO::FETCH_OBJ);
+    }
 }
