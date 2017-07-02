@@ -15,7 +15,7 @@ class Admin extends Controller
 //        $this->view->display('admin.php');
 
         $data = Article::findAll();
-        $table = new AdminDataTable($data, ['getTitle']);
+        $table = new AdminDataTable($data, ['getId'], ['getTitle'], ['getText'], ['getAuthor']);
         $data = $table->render();
         $this->view->data = $data;
         $this->view->display('admin.php');

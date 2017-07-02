@@ -25,9 +25,24 @@ class Article extends Model
 
     const TABLE = 'news';
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function getTitle()
     {
         return $this->title;
+    }
+
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    public function getAuthor()
+    {
+        return $this->author;
     }
 
     public function __get($key)
