@@ -19,6 +19,10 @@ try {
     $controller->action($actionName);
 }
 
+catch (App\MultiException $e) {
+    \App\Loger::add($e);
+}
+
 catch (App\Exceptions\DBRequestException $e) {
     $controller = new \App\Controllers\Errors;
     $controller->action('DBRequestException');

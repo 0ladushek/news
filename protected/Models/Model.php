@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Loger;
+use App\MagicTrait;
 use App\MultiException;
 
 /**
@@ -13,16 +15,20 @@ use App\MultiException;
 
 abstract class Model
 {
+
+    use MagicTrait;
+
     const TABLE = '';
+
 
     public function fill(array $data)
     {
-
-        foreach ($this as $k => $v) {
-            if(!empty($data[$k])) {
+        try {
+            foreach ($data as $k => $v) {
                 $this->$k = $data[$k];
             }
-
+        } catch (MultiException $e) {
+            Loger::add($e);
         }
 
         return $this;
@@ -50,7 +56,7 @@ abstract class Model
 
     protected function isNew()
     {
-        if (empty($this->id)) {
+        if (empty($this->data['id'])) {
             return true;
         }
 
@@ -59,7 +65,7 @@ abstract class Model
         $arr = $db->query($sql);
 
         foreach ($arr as $value) {
-            if ($this->id == $value->id) {
+            if ($this->data['id'] == $value->id) {
                 return false;
             }
         }
@@ -69,7 +75,7 @@ abstract class Model
     public function insert()
     {
         $rows = $values = [];
-        foreach ($this as $key => $val) {
+        foreach ($this->data as $key => $val) {
             if($key == 'id') {
                 continue;
             }
@@ -80,24 +86,24 @@ abstract class Model
             'VALUES ' . '(:' . implode(', :', $rows) . ')';
         $db = new \App\Db;
         $db->execute($sql, $values);
-        $this->id = $db->lastInsertId();
+        $this->data['id'] = $db->lastInsertId();
         return $sql;
     }
 
     public function update() {
-        if (empty($this->id)) {
+        if (empty($this->data['id'])) {
             return false;
         }
 
         $rows = $values = [];
-        foreach ($this as $key => $val) {
+        foreach ($this->data as $key => $val) {
             if('id' === $key) {
                 continue;
             }
             $rows[] = $key . '=:' . $key;
             $values[$key] = $val;
         }
-        $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(", ", $rows)  . ' WHERE id=' . $this->id;
+        $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(", ", $rows)  . ' WHERE id=' . $this->data['id'];
         $db = new \App\Db;
         return $db->execute($sql, $values);
     }
@@ -110,7 +116,7 @@ abstract class Model
 
         $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id = :id';
         $db = new \App\Db;
-        return $db->execute($sql, ['id' => $this->id]);
+        return $db->execute($sql, ['id' => $this->data['id']]);
     }
 
     public function save() {

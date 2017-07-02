@@ -8,3 +8,24 @@
 Ошибка: SQLSTATE[HY000] [1049] Unknown database 'teasdfsadfst'Код: 1049 в C:\OpenServer\domains\pr-of-it-homework\protected\Db.php строка 16
 Ошибка: SQLSTATE[HY000] [1049] Unknown database 'teasdfsadfst'Код: 1049 в C:\OpenServer\domains\pr-of-it-homework\protected\Db.php строка 16
 Ошибка: SQLSTATE[HY000] [1049] Unknown database 'teasdfsadfst'Код: 1049 в C:\OpenServer\domains\pr-of-it-homework\protected\Db.php строка 16
+Ошибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+Ошибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiException Ошибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 47
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 47

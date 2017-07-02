@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Models;
+use App\Exceptions\Validate_TitleException;
+use App\MagicTrait;
+use App\MultiException;
 
 
 /**
@@ -14,11 +17,11 @@ namespace App\Models;
  */
 class Article extends Model
 {
-    public $id;
-    public $title;
-    public $text;
-    public $date;
-    public $author_id;
+//    public $id;
+//    public $title;
+//    public $text;
+//    public $date;
+//    public $author_id;
 
     const TABLE = 'news';
 
@@ -38,5 +41,18 @@ class Article extends Model
         $db = new \App\Db;
         $sql = 'SELECT id, title, author_id, date FROM ' . static::TABLE . ' ORDER BY date DESC LIMIT 3';
         return $db->query($sql, self::class);
+    }
+
+    public  function validate_title ($title) {
+        $errors = new MultiException;
+        if (strlen($title) < 5) {
+            $errors->add(new Validate_TitleException('Слишком короткое название.'));
+        }
+        elseif (strlen($title) > 10 ) {
+            $errors->add(new Validate_TitleException('Слишком длинное название.'));
+        }
+        if (!$errors->empty()) {
+            throw $errors;
+        }
     }
 }

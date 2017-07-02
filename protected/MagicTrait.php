@@ -3,7 +3,6 @@
 
 namespace App;
 
-
 trait MagicTrait
 {
     protected $data = [];
@@ -15,6 +14,10 @@ trait MagicTrait
 
     public function __set($key, $val)
     {
+        $methodName = 'validate_' . $key;
+        if (method_exists($this, $methodName)) {
+            $this->$methodName($val);
+        }
         return $this->data[$key] = $val;
     }
 
