@@ -18,7 +18,20 @@
 <body>
 <div class="row">
     <div class="container">
-        {{ data }}
+        <table class="table table-bordered">
+            {% for arr in data %}
+            <tr>
+                {% for val in arr %}
+                    <td>{{ val }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+
+
+
+
+
     </div>
 </body>
 </html>

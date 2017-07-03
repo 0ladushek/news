@@ -14,10 +14,10 @@ class Admin extends Controller
 //        $this->view->news = $data;
 //        $this->view->display('admin.php');
 
-        $data = Article::findAll();
-        $table = new AdminDataTable($data, ['getId'], ['getTitle'], ['getText'], ['getAuthor']);
-        $data = $table->render();
-        $this->view->data = $data;
+        $article = Article::findAll();
+        $table = new AdminDataTable($article, ['getId', 'getTitle', 'getText', 'getAuthor']);
+        $this->view->data = $table->render();;
+
         $this->view->display('admin.php');
     }
 

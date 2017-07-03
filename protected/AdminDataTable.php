@@ -16,20 +16,20 @@ class AdminDataTable extends View
         $this->functions = $functions;
     }
 
+
     public function render()
     {
-        $ret = '<table>';
+
+        $ret = [];
         foreach ($this->models as $model) {
-            $ret .= '<tr>';
+            $arr = [];
             foreach ($this->functions as $method) {
-                $ret .= '<td>' . $model->$method() . '<td>';
+                $arr[] = $model->$method();
             }
-            $ret .= '</tr>';
+            $ret[] = $arr;
         }
-        $ret .= '</table>';
+
         return $ret;
     }
-
-
 
 }
