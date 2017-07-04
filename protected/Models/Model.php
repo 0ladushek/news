@@ -23,14 +23,19 @@ abstract class Model
 
     public function fill(array $data)
     {
-        try {
-            foreach ($data as $k => $v) {
+        $errors = new MultiException;
+
+        foreach ($data as $k => $v) {
+            try {
                 $this->$k = $data[$k];
+            } catch (\Throwable $e) {
+                $errors->add($e);
             }
-        } catch (MultiException $e) {
-            Loger::add($e);
         }
 
+        if (!$errors->empty()) {
+             throw $errors;
+        }
         return $this;
     }
 

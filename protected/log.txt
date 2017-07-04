@@ -29,3 +29,4 @@ App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-home
 App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 46
 App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 47
 App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Article.php строка 47
+App\MultiExceptionОшибка: Код: 0 в C:\OpenServer\domains\pr-of-it-homework\protected\Models\Model.php строка 26

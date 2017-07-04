@@ -20,7 +20,7 @@ try {
 }
 
 catch (App\MultiException $e) {
-    \App\Loger::add($e);
+    var_dump($e);
 }
 
 catch (App\Exceptions\DBRequestException $e) {

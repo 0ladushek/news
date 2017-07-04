@@ -64,15 +64,12 @@ class Article extends Model
     }
 
     public  function validate_title ($title) {
-        $errors = new MultiException;
         if (strlen($title) < 5) {
-            $errors->add(new Validate_TitleException('Слишком короткое название.'));
+            throw new Validate_TitleException('Слишком короткое название.');
         }
         elseif (strlen($title) > 10 ) {
-            $errors->add(new Validate_TitleException('Слишком длинное название.'));
+            throw new Validate_TitleException('Слишком длинное название.');
         }
-        if (!$errors->empty()) {
-            throw $errors;
-        }
+
     }
 }
