@@ -12,7 +12,7 @@ class News extends Controller
     {
         $data = Article::findAll();
         $this->view->news = $data;
-        $this->view->display('index.php');
+        $this->view->display(__DIR__ . '/../../templates/index.php');
     }
 
     protected function actionOne()
@@ -25,7 +25,7 @@ class News extends Controller
                 throw new NotFoundException;
             }
             $this->view->article = $data;
-            $this->view->display('article.php');
+            $this->view->display(__DIR__ . '/../../templates/article.php');
         }
         else {
             throw new \Exception('Не передан get параметр');

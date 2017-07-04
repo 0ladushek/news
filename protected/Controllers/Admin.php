@@ -12,13 +12,13 @@ class Admin extends Controller
     {
 //        $data = Article::findAll();
 //        $this->view->news = $data;
-//        $this->view->display('admin.php');
+//        $this->view->display(__DIR__ . '/../../templates/admin.php');
 
         $article = Article::findAll();
         $table = new AdminDataTable($article, ['getId', 'getTitle', 'getText', 'getAuthor']);
         $this->view->data = $table->render();;
 
-        $this->view->display('admin.php');
+        $this->view->display(__DIR__ . '/../../templates/admin.php');
     }
 
     protected function actionEdit()
@@ -28,7 +28,7 @@ class Admin extends Controller
 
             $data = Article::findById($id);
             $this->view->article = $data;
-            $this->view->display('edit.php');
+            $this->view->display(__DIR__ . '/../../templates/edit.php');
         }
     }
 

@@ -10,17 +10,17 @@ class Errors extends Controller
 {
     protected function action404()
     {
-        $this->view->display('404.php');
+        $this->view->display(__DIR__ . '/../../templates/404.php');
     }
 
     protected function actionDBConnectError()
     {
-        $this->view->display('DBConnectError.php');
+        $this->view->display(__DIR__ . '/../../templates/DBConnectError.php');
     }
 
     protected function actionDBRequestException()
     {
-        $this->view->display('DBRequestException.php');
+        $this->view->display(__DIR__ . '/../../templates/DBRequestException.php');
     }
 
 }
