@@ -52,7 +52,7 @@ class Article extends Model
             return $author_name;
         }
         else {
-            return $this->data[$key];
+            return @$this->data[$key];
         }
     }
 

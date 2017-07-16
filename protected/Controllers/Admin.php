@@ -10,14 +10,8 @@ class Admin extends Controller
 {
     protected function actionDefault()
     {
-//        $data = Article::findAll();
-//        $this->view->news = $data;
-//        $this->view->display(__DIR__ . '/../../templates/admin.php');
-
-        $article = Article::findAll();
-        $table = new AdminDataTable($article, [getId, getTitle, getText, getAuthor]);
-        $this->view->data = $table->render();
-
+        $data = Article::findAll();
+        $this->view->news = $data;
         $this->view->display(__DIR__ . '/../../templates/admin.php');
     }
 
